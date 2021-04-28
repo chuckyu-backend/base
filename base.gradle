@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id "io.freefair.lombok" version "5.3.3.3"
     id "groovy"
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    // id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 group = 'com.chuck'
@@ -39,9 +39,6 @@ dependencies {
     
     // functionalTestImplementation platform("org.spockframework:spock-bom:2.0-M4-groovy-3.0")
     // functionalTestImplementation 'org.spockframework:spock-core'
-
-    // compile fileTree(dir:'build/libs',include:['*.jar']) 表示编译时依赖本地的jar
-
 }
 
 tasks.withType(Test).configureEach {
