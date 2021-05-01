@@ -23,6 +23,10 @@ repositories {
     maven { url 'https://repo.spring.io/milestone' }
 }
 
+ext{
+    jar.enabled=true
+}
+
 dependencies {
     // spock test
     implementation 'org.hamcrest:hamcrest:2.2'
