@@ -11,7 +11,7 @@ import lombok.Data;
  *          THINKING 不使用基本类型的原因
  **/
 @Data
-public class Page {
+public class PageReq {
     /**
      * 每页大小
      */

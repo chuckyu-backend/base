@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id "io.freefair.lombok" version "5.3.3.3"
-    id "groovy"
+    // id "groovy"
     // id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
@@ -23,18 +23,18 @@ repositories {
     maven { url 'https://repo.spring.io/milestone' }
 }
 
-ext{
-    jar.enabled=true
-}
+// ext{
+//     jar.enabled=true
+// }
 
 dependencies {
     // spock test
-    implementation 'org.hamcrest:hamcrest:2.2'
-    testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
+    // implementation 'org.hamcrest:hamcrest:2.2'
+    // testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
     
     // log4j 2
-    implementation 'org.apache.logging.log4j:log4j-api:2.14.0'
-    implementation 'org.apache.logging.log4j:log4j-core:2.14.0'
+    // implementation 'org.apache.logging.log4j:log4j-api:2.14.0'
+    // implementation 'org.apache.logging.log4j:log4j-core:2.14.0'
     // implementation 'org.hibernate.validator:hibernate-validator'
     
     
