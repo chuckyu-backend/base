@@ -6,7 +6,3 @@ pluginManagement {
 }
 rootProject.name = 'base'
 rootProject.buildFileName='base.gradle'
-
-// rootProject.children.each {
-//     it.buildFileName = it.name + '.gradle'
-// }

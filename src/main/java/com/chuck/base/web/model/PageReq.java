@@ -1,6 +1,7 @@
 package com.chuck.base.web.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Chuck
@@ -10,14 +11,16 @@ import lombok.Data;
  * 
  *          THINKING 不使用基本类型的原因
  **/
-@Data
+@Getter
+@Setter
 public class PageReq {
-    /**
-     * 每页大小
-     */
-    private Integer pageSize;
     /**
      * 第几页，从1开始
      */
     private Integer pageNum;
+    /**
+     * 每页大小
+     */
+    private Integer pageSize;
+
 }

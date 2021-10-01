@@ -1,6 +1,7 @@
 package com.chuck.base.web.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -9,7 +10,8 @@ import lombok.Data;
  * @version 0.0.1
  * @apiNote
  **/
-@Data
+@Setter
+@Getter
 public class PageResp {
     /**
      * 当前页码
