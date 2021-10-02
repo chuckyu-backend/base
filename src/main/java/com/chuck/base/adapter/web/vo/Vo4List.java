@@ -1,8 +1,6 @@
 package com.chuck.base.adapter.web.vo;
 
 import javax.validation.constraints.DecimalMin;
-
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Vo4List {
-    @ApiModelProperty(value = "数据库主键", example = "1")
+//    //@Schema(value = "数据库主键", example = "1")
     @DecimalMin("1")
     private int id;
 }

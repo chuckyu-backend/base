@@ -13,6 +13,7 @@ sourceCompatibility = '1.8'
 ext {
     queryDslVersion = '4.4.0'
     swaggerVersion = '2.9.2'
+    springdocVersion = '1.5.10'
     spockVersion = '2.0-M2-groovy-3.0'
     springCloudVersion = 'Hoxton.SR11'
 }
@@ -58,9 +59,9 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-api'
     implementation 'org.apache.logging.log4j:log4j-core'
 
-    // Swagger
-    implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
-    implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
+    //OpenAPI
+    implementation "org.springdoc:springdoc-openapi-ui:${springdocVersion}"
+    implementation "org.springdoc:springdoc-openapi-hateoas:${springdocVersion}"
 
     // Test
     implementation 'org.hamcrest:hamcrest:2.2'
