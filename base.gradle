@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.5.1'
+    id 'org.springframework.boot' version '2.5.5'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id "io.freefair.lombok" version "5.3.3.3"
     id 'java-library'
@@ -12,8 +12,7 @@ sourceCompatibility = '1.8'
 
 ext {
     queryDslVersion = '4.4.0'
-    swaggerVersion = '2.9.2'
-    springdocVersion = '1.5.10'
+    springdocVersion = '1.5.11'
     spockVersion = '2.0-M2-groovy-3.0'
     springCloudVersion = 'Hoxton.SR11'
 }
@@ -34,35 +33,30 @@ repositories {
 
 dependencies {
     // Starter
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //    implementation "org.springdoc:springdoc-openapi-data-rest:${springdocVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-
+    //    WebFlux
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation "org.springdoc:springdoc-openapi-webflux-ui:${springdocVersion}"
+    //    Hateoas
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    implementation "org.springdoc:springdoc-openapi-hateoas:${springdocVersion}"
+    //    Kafka
+    implementation 'org.springframework.kafka:spring-kafka'
     // Guava
     implementation 'com.google.guava:guava:20.0'
-
-    // Lombok
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-
     // Reids
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-
+//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     // QueryDSL
     api "com.querydsl:querydsl-jpa:${queryDslVersion}"
     annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
     annotationProcessor 'javax.annotation:javax.annotation-api'
-
     // Log4j 2
     implementation 'org.slf4j:log4j-over-slf4j'
     implementation 'org.apache.logging.log4j:log4j-api'
     implementation 'org.apache.logging.log4j:log4j-core'
-
-    //OpenAPI
-    implementation "org.springdoc:springdoc-openapi-ui:${springdocVersion}"
-    implementation "org.springdoc:springdoc-openapi-hateoas:${springdocVersion}"
-
     // Test
     implementation 'org.hamcrest:hamcrest:2.2'
     testImplementation ('org.powermock:powermock-module-junit4:1.5'){
@@ -71,11 +65,12 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
     // Spock test
     testImplementation "org.spockframework:spock-core:${spockVersion}"
     testImplementation "org.spockframework:spock-spring:${spockVersion}"
-
+// JSON-PATH
+    testImplementation 'com.jayway.jsonpath:json-path'
 }
 
 // uploadArchives {
