@@ -28,4 +28,10 @@ public abstract class IdentifiedDomainObject implements Serializable {
     // protected void setId(int anId) {
     // this.id = anId;
     // }
+
+    private String name;
+
+    public IdNamePair identify(){
+        return new IdNamePair(this.getId(),this.getName());
+    }
 }

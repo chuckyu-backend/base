@@ -37,12 +37,15 @@ dependencies {
     //    implementation "org.springdoc:springdoc-openapi-data-rest:${springdocVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    //  SpringMVC
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springdoc:springdoc-openapi-ui:${springdocVersion}"
     //    WebFlux
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation "org.springdoc:springdoc-openapi-webflux-ui:${springdocVersion}"
+//    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+//    implementation "org.springdoc:springdoc-openapi-webflux-ui:${springdocVersion}"
     //    Hateoas
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
-    implementation "org.springdoc:springdoc-openapi-hateoas:${springdocVersion}"
+//    implementation "org.springdoc:springdoc-openapi-hateoas:${springdocVersion}"
     //    Kafka
     implementation 'org.springframework.kafka:spring-kafka'
     // Guava
