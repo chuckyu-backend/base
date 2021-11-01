@@ -17,6 +17,9 @@ import lombok.Setter;
 @Setter
 public abstract class IdentifiedDomainObject implements Serializable {
 
+    /**
+     * 未持久化的实体id为null
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
