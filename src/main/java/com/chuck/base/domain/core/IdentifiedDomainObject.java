@@ -1,6 +1,8 @@
 package com.chuck.base.domain.core;
 
 import java.io.Serializable;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +17,7 @@ import lombok.Setter;
 @MappedSuperclass
 @Getter
 @Setter
+@Access(AccessType.FIELD)
 public abstract class IdentifiedDomainObject implements Serializable {
 
     /**
@@ -31,8 +34,7 @@ public abstract class IdentifiedDomainObject implements Serializable {
     // protected void setId(int anId) {
     // this.id = anId;
     // }
-
-    private String name;
+    protected abstract String getName();
 
     public IdNamePair identify(){
         return new IdNamePair(this.getId(),this.getName());
