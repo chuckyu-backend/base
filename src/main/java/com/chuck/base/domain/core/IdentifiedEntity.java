@@ -1,5 +1,7 @@
 package com.chuck.base.domain.core;
 
+import com.chuck.base.handler.ValidationNotificationHandler;
+
 /**
  * Chuck 26/9/21 10:19
  */

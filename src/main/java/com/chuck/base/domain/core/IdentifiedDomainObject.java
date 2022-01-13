@@ -6,7 +6,10 @@ import javax.persistence.AccessType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +21,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Access(AccessType.FIELD)
+@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public abstract class IdentifiedDomainObject implements Serializable {
 
     /**
@@ -25,6 +30,7 @@ public abstract class IdentifiedDomainObject implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Integer id;
 
     // protected int getId() {

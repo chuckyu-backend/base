@@ -7,9 +7,10 @@ package com.chuck.base.domain.core;
  * @version 0.0.1
  * @apiNote
  **/
-public abstract class IdentifiedValueObject extends IdentifiedDomainObject {
+public abstract class IdentifiedValueObject extends IdentifiedDomainObject implements ValueObject{
 
     protected IdentifiedValueObject() {
         super();
     }
+
 }
