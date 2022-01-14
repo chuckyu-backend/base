@@ -9,7 +9,7 @@ import lombok.Value;
  *     <p>THINKING 不使用基本类型的原因
  */
 @Value
-public class PageCondCO {
+public class PageCondCo {
   /** 第几页，从1开始 */
   private Integer num;
   /** 每页大小 */

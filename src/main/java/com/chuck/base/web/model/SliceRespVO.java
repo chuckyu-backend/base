@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SliceRespVO<T> {
+public class SliceRespVo<T> {
   /** 当前页码 */
   private Integer num;
   /** 每页数量 */

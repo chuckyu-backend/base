@@ -1,6 +1,7 @@
 package com.chuck.base.web.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * THINKING 是否有直接JPA的Page对象
@@ -11,7 +12,8 @@ import lombok.Data;
  * @apiNote
  */
 @Data
-public class PageRespVO<T> extends SliceRespVO<T> {
+@EqualsAndHashCode(callSuper = true)
+public class PageRespVo<T> extends SliceRespVo<T> {
 
   /** 记录总数 */
   private Long totalSize;
