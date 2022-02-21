@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id "io.freefair.lombok" version "5.3.3.3"
     id 'java-library'
+    id 'maven-publish'
     id 'java'
 }
 
@@ -11,33 +12,26 @@ version = '0.0.1'
 sourceCompatibility = '1.8'
 
 ext {
-    queryDslVersion = '4.4.0'
+    queryDslVersion = '4.1.4'
 //    springdocVersion = '1.5.11'
     spockVersion = '2.0-M2-groovy-3.0'
     springCloudVersion = 'Hoxton.SR11'
+    set('nexusUrl', "http://192.168.5.85:8081")
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
-    maven { url 'https://repo.spring.io/milestone' }//url "http://localhost:8081/nexus/content/groups/public"
 }
-
-// sourceSets {
-//     generated {
-//         java {
-//             srcDirs = ['build/generated/sources/annotationProcessor/java/main']
-//         }
-//     }
-// }
 
 dependencies {
     // Starter
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    //  SpringMVC
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation "jakarta.persistence:jakarta.persistence-api"
     //    WebFlux
 //    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     //    Hateoas
@@ -58,12 +52,12 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-core'
     // Test
     implementation 'org.hamcrest:hamcrest:2.2'
-    testImplementation ('org.powermock:powermock-module-junit4:1.5'){
+    testImplementation('org.powermock:powermock-module-junit4:1.5') {
         exclude group: 'org.hamcrest'
     }
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+//    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//    }
 //    testImplementation 'org.springframework.kafka:spring-kafka-test'
     // Spock test
     testImplementation "org.spockframework:spock-core:${spockVersion}"
@@ -72,24 +66,50 @@ dependencies {
     testImplementation 'com.jayway.jsonpath:json-path'
 }
 
-// uploadArchives {
-//     repositories {
-//        mavenDeployer {
-//              repository(url: "http://localhost:8081/nexus/content/repositories/snapshots") {
-//              authentication(userName: "admin", password: "admin123")
-//             }
-//              pom.version = "1.0-SNAPSHOT"
-//              pom.artifactId = "simple-project"
-//              pom.groupId = "com.example"
-//        }
-//     }
-// }
+java {
+//    withJavadocJar()
+    withSourcesJar()
+}
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId 'base'
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = "${nexusUrl}/repository/maven-releases/"
+            def snapshotsRepoUrl = "${nexusUrl}/repository/maven-snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            allowInsecureProtocol = true
+            credentials {
+                username 'admin'
+                password '1234567'
+            }
+        }
+    }
+}
+
+javadoc {
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
 bootJar {
-    enabled=true
+    enabled = false
 }
 jar {
-    enabled=true
+    enabled = false
 }
 
 tasks.withType(Test).configureEach {
