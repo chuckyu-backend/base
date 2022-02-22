@@ -5,18 +5,28 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'java'
+    id 'idea'
 }
 
 group = 'com.chuck'
 version = '0.0.1'
 sourceCompatibility = '1.8'
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 ext {
-    queryDslVersion = '4.1.4'
-//    springdocVersion = '1.5.11'
-    spockVersion = '2.0-M2-groovy-3.0'
-    springCloudVersion = 'Hoxton.SR11'
+    set('queryDslVersion', "4.4.0")
+    set('springdocVersion', "1.6.4")
+    set('spockVersion', "2.1-M2-groovy-3.0")
+    set('testcontainersVersion', "1.16.2")
     set('nexusUrl', "http://192.168.5.85:8081")
+    set('mapstructVersion', '1.4.2.Final')
+    set('knife4jVersion', "2.0.7")
+    set("guavaVersion", "20.0")
 }
 
 repositories {
@@ -25,45 +35,39 @@ repositories {
 }
 
 dependencies {
-    // Starter
+    // 初始依赖
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-
     implementation "jakarta.persistence:jakarta.persistence-api"
-    //    WebFlux
-//    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    //    Hateoas
-//    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
-    //    Kafka
-//    implementation 'org.springframework.kafka:spring-kafka'
-    // Guava
-    implementation 'com.google.guava:guava:20.0'
-    // Reids
-//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    // QueryDSL
+    implementation "com.google.guava:guava:${guavaVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     api "com.querydsl:querydsl-jpa:${queryDslVersion}"
     annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
     annotationProcessor 'javax.annotation:javax.annotation-api'
+    annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
+    //    WebFlux
+//    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
     // Log4j 2
-    implementation 'org.slf4j:log4j-over-slf4j'
-    implementation 'org.apache.logging.log4j:log4j-api'
-    implementation 'org.apache.logging.log4j:log4j-core'
+//    implementation 'org.slf4j:log4j-over-slf4j'
+//    implementation 'org.apache.logging.log4j:log4j-api'
+//    implementation 'org.apache.logging.log4j:log4j-core'
     // Test
-    implementation 'org.hamcrest:hamcrest:2.2'
-    testImplementation('org.powermock:powermock-module-junit4:1.5') {
-        exclude group: 'org.hamcrest'
-    }
+//    implementation 'org.hamcrest:hamcrest:2.2'
+//    testImplementation('org.powermock:powermock-module-junit4:1.5') {
+//        exclude group: 'org.hamcrest'
+//    }
 //    testImplementation('org.springframework.boot:spring-boot-starter-test') {
 //        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 //    }
 //    testImplementation 'org.springframework.kafka:spring-kafka-test'
     // Spock test
-    testImplementation "org.spockframework:spock-core:${spockVersion}"
-    testImplementation "org.spockframework:spock-spring:${spockVersion}"
+//    testImplementation "org.spockframework:spock-core:${spockVersion}"
+//    testImplementation "org.spockframework:spock-spring:${spockVersion}"
 // JSON-PATH
-    testImplementation 'com.jayway.jsonpath:json-path'
+//    testImplementation 'com.jayway.jsonpath:json-path'
 }
 
 java {
