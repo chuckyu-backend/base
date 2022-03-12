@@ -3,24 +3,22 @@ package com.chuck.base.domain.gateway;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-public interface BaseGateway<T,P> {
-    void create();
+public interface BaseGateway<T, P> {
 
-    //  Query
-    T find(String name);
+  void create();
 
-    T find(int id);
+  //  Query
+  T find(String name);
 
-    Page<T> page(P cond, PageRequest pageCond);
+  T find(int id);
 
-    //    Update
-    void update();
+  Page<T> page(P cond, PageRequest pageCond);
 
+  //    Update
+  void update();
 
-    //    Delete
-    void delete(String name);
+  //    Delete
+  void delete(String name);
 
-    void delete(int id);
-
-
+  void delete(int id);
 }
