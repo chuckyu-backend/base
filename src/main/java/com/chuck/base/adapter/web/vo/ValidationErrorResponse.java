@@ -22,4 +22,5 @@ public class ValidationErrorResponse extends BaseResponse<List<Violation>> {
     private final int code = HttpStatus.BAD_REQUEST.value();
 
     private List<Violation> data = new ArrayList<>();
+
 }
