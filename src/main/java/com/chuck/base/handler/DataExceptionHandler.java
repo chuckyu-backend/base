@@ -2,8 +2,10 @@ package com.chuck.base.handler;
 
 import com.chuck.base.adapter.BaseResponse;
 import com.querydsl.core.NonUniqueResultException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.NoSuchElementException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,6 +44,21 @@ public class DataExceptionHandler {
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public BaseResponse<Void> onNoSuchElementException(NoSuchElementException e) {
     log.error(e.getMessage());
+    return BaseResponse.error(e.getMessage(), HttpStatus.BAD_REQUEST.value());
+  }
+
+  @ResponseBody
+  @ExceptionHandler(PropertyReferenceException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public BaseResponse<Void> onPropertyReferenceException(PropertyReferenceException e) {
+    return BaseResponse.error(e.getMessage(), HttpStatus.BAD_REQUEST.value());
+  }
+
+  @ResponseBody
+  @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public BaseResponse<Void> onSQLIntegrityConstraintViolationException(
+      SQLIntegrityConstraintViolationException e) {
     return BaseResponse.error(e.getMessage(), HttpStatus.BAD_REQUEST.value());
   }
 }
