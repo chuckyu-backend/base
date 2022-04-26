@@ -1,5 +1,6 @@
 package com.chuck.base.domain.event;
 
+import com.chuck.base.client.dto.event.DomainEvent;
 import java.util.Set;
 
 /**
