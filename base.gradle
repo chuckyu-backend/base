@@ -72,7 +72,7 @@ javadoc {
 }
 
 jar {
-    enabled = false
+    enabled = true
 }
 
 tasks.withType(Test).configureEach {
