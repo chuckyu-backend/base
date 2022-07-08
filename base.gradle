@@ -1,7 +1,5 @@
 plugins {
     id "io.freefair.lombok" version "5.3.3.3"
-//    id 'java-library'
-//    id 'maven-publish'
     id 'java'
     id 'idea'
 }

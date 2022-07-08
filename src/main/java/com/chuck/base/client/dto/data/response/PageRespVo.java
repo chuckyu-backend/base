@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 public class PageRespVo<T> extends SliceRespVo<T> {
 
   /** 记录总数 */
-  private Long totalSize;
+  private Long totalSize = 0L;
   /** 页码总数 */
-  private Integer totalNums;
+  private Integer totalNum = 0;
 }
