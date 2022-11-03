@@ -14,11 +14,8 @@ import lombok.Setter;
 @Setter
 public class BaseResponse<T> {
 
-  private static final int SERVER_ERROR = 500;
-
-  private static final int CLIENT_ERROR = 400;
-  /** 状态码 */
-  private int code = 200;
+  /** 业务正常状态码 */
+  private int code = 1200;
   /** 描述信息 */
   private String message;
 
