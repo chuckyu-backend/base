@@ -8,12 +8,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 /**
  * 用户认证（CRM微服务专有）
  *
+ * <p>Should be extend
+ *
  * @description
  * @author: Chuck
  * @date: 2/19/2022 11:10 AM
  */
 public abstract class AuthenticationCheckService extends DaoAuthenticationProvider {
-
+  /**
+   * TODO：extend this method
+   *
+   * @param userDetails
+   * @param authentication
+   * @throws AuthenticationException
+   */
   @Override
   protected abstract void additionalAuthenticationChecks(
       UserDetails userDetails, UsernamePasswordAuthenticationToken authentication)
