@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author: Chuck
  * @date: 2/19/2022 11:10 AM
  */
-public abstract class AuthenticationCheckService extends DaoAuthenticationProvider {
+public abstract class PasswordMatchService extends DaoAuthenticationProvider {
   /**
    * TODO：extend this method
    *
