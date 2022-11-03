@@ -117,7 +117,7 @@ bootJar {
     enabled = false
 }
 jar {
-    enabled = false
+    enabled = true
 }
 
 tasks.withType(Test).configureEach {

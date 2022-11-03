@@ -1,5 +1,9 @@
 plugins {
+    id 'org.springframework.boot' version '2.5.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id "io.freefair.lombok" version "5.3.3.3"
+//    id 'maven-publish'
+    id 'java-library'
     id 'java'
     id 'idea'
 }
@@ -38,13 +42,8 @@ repositories {
 
 dependencies {
     // 初始依赖
-//    implementation "jakarta.persistence:jakarta.persistence-api"
     implementation "com.google.guava:guava:${guavaVersion}"
 
-    // Log4j 2
-//    implementation 'org.slf4j:log4j-over-slf4j'
-//    implementation 'org.apache.logging.log4j:log4j-api'
-//    implementation 'org.apache.logging.log4j:log4j-core'
     // Test
 //    implementation 'org.hamcrest:hamcrest:2.2'
 //    testImplementation('org.powermock:powermock-module-junit4:1.5') {
@@ -54,21 +53,27 @@ dependencies {
     // Spock test
 //    testImplementation "org.spockframework:spock-core:${spockVersion}"
 //    testImplementation "org.spockframework:spock-spring:${spockVersion}"
+
 // JSON-PATH
 //    testImplementation 'com.jayway.jsonpath:json-path'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+//    annotationProcessor 'javax.annotation:javax.annotation-api'
+
+    implementation "io.jsonwebtoken:jjwt:${jwtVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    implementation 'org.apache.poi:poi-ooxml:4.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//    implementation "redis.clients:jedis:${jedisVersion}"
 }
 
-java {
-//    withJavadocJar()
-    withSourcesJar()
+bootJar {
+    enabled = false
 }
-
-javadoc {
-    if (JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption('html5', true)
-    }
-}
-
 jar {
     enabled = true
 }
