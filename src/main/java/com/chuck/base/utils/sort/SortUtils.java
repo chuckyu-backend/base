@@ -1,12 +1,6 @@
 package com.chuck.base.utils.sort;
 
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.domain.Sort.Order;
 import org.springframework.util.ObjectUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author Administrator
@@ -15,33 +9,33 @@ import java.util.List;
  * @apiNote Value Object
  */
 public class SortUtils {
-  private SortUtils() {}
-
-  public static List<Order> ordersOfSort(String sort) {
-    if (ObjectUtils.isEmpty(sort)) {
-      return Arrays.asList(Order.by("id"));
-    }
-
-    List<Order> orders = new ArrayList<>(5);
-    String[] ordersOfStr = sort.split(",");
-    for (String orderOfStr : ordersOfStr) {
-      orders.add(order(orderOfStr));
-    }
-    return orders;
-  }
-
-  private static Order order(String orderOfStr) {
-    Direction dir = Direction.ASC;
-    String property = orderOfStr;
-
-    if (hasPlusOrMinusSymbol(orderOfStr)) {
-      property = orderOfStr.substring(1);
-    }
-    if (orderOfStr.startsWith("-")) {
-      dir = Direction.DESC;
-    }
-    return new Order(dir, property);
-  }
+  //  private SortUtils() {}
+  //
+  //  public static List<Order> ordersOfSort(String sort) {
+  //    if (ObjectUtils.isEmpty(sort)) {
+  //      return Arrays.asList(Order.by("id"));
+  //    }
+  //
+  //    List<Order> orders = new ArrayList<>(5);
+  //    String[] ordersOfStr = sort.split(",");
+  //    for (String orderOfStr : ordersOfStr) {
+  //      orders.add(order(orderOfStr));
+  //    }
+  //    return orders;
+  //  }
+  //
+  //  private static Order order(String orderOfStr) {
+  //    Direction dir = Direction.ASC;
+  //    String property = orderOfStr;
+  //
+  //    if (hasPlusOrMinusSymbol(orderOfStr)) {
+  //      property = orderOfStr.substring(1);
+  //    }
+  //    if (orderOfStr.startsWith("-")) {
+  //      dir = Direction.DESC;
+  //    }
+  //    return new Order(dir, property);
+  //  }
 
   private static boolean hasPlusOrMinusSymbol(String orderOfStr) {
     if (ObjectUtils.isEmpty(orderOfStr)) {

@@ -10,7 +10,7 @@ plugins {
 
 group = 'com.chuck'
 version = '0.0.1'
-sourceCompatibility = '1.8'
+sourceCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -42,6 +42,7 @@ repositories {
 
 dependencies {
     // 初始依赖
+    implementation files('temp/algs4.jar')
     implementation "com.google.guava:guava:${guavaVersion}"
 
     // Test
