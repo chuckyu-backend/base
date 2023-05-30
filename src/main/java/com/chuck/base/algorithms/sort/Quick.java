@@ -18,11 +18,11 @@ public class Quick {
     sort(a, j + 1, hi);
   }
 
-  public static void main(String[] args) {
-    Integer[] a = new Integer[] {4, 1, 2, 8};
-    sort(a);
-    Arrays.stream(a).forEach(System.out::println);
-  }
+//  public static void main(String[] args) {
+//    Integer[] a = new Integer[] {4, 1, 2, 8};
+//    sort(a);
+//    Arrays.stream(a).forEach(System.out::println);
+//  }
 
   private static int partition(Comparable[] a, int lo, int hi) {
     int i = lo, j = hi + 1;
